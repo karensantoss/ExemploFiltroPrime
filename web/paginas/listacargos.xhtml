@@ -1,0 +1,44 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="conteudo">
+        <h:form acceptcharset="ISO-8859-1">
+            <p:dataTable value="#{cargoMB.cargos}" var="cargo" >
+                <f:facet name="header">Cargos</f:facet>
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Código"/>
+                    </f:facet>   
+                    <h:outputText value="#{cargo.codigo}"/>
+                </p:column>                    
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nome"/>
+                    </f:facet>   
+                    <h:outputText value="#{cargo.nome}"/>
+                </p:column>
+                
+                <p:column>
+                    
+                    <f:facet name="header">
+                        <p:commandButton action="/faces/paginas/cargo.xhtml">
+                            <h:graphicImage library="imagens" name="add.png"/>
+                        </p:commandButton>
+                    </f:facet>   
+                    <p:commandButton action="#{cargoMB.preparaAlteracao}" >
+                        <h:graphicImage library="imagens" name="edit.png"/>
+                        <f:setPropertyActionListener value="#{cargo}" target="#{cargoMB.cargo}"/>
+                    </p:commandButton>
+                    <p:commandButton action="#{cargoMB.remove}" >
+                        <h:graphicImage library="imagens" name="delete.png"/>
+                        <f:setPropertyActionListener value="#{cargo}" target="#{cargoMB.cargo}"/>
+                    </p:commandButton>
+
+                </p:column>  
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>
