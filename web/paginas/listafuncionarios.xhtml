@@ -2,68 +2,68 @@
                 template="../WEB-INF/template/template.xhtml"
                 xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
     <ui:define name="conteudo">
         <h:form acceptcharset="ISO-8859-1">
-            <h:dataTable value="#{funcionarioMB.funcionarios}" var="funcionario" styleClass="tabela" headerClass="cabecalho">
+            <p:dataTable value="#{funcionarioMB.funcionarios}" var="funcionario" paginator="true" rows="6">
 
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Cargo"/>
                     </f:facet>   
                     <h:outputText value="#{funcionario.cargo.nome}"/>
 
-                </h:column> 
+                </p:column> 
 
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">
-                        <h:outputText value="Códogo"/>
+                        <h:outputText value="Código"/>
                     </f:facet>   
                     <h:outputText value="#{funcionario.codigo}"/>
-                </h:column>  
+                </p:column>  
 
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Nome"/>
                     </f:facet>   
                     <h:outputText value="#{funcionario.nome}"/>
-                </h:column>  
+                </p:column>  
 
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">
                         <h:outputText value="Data de nascimento"/>
                     </f:facet>   
                     <h:outputText value="#{funcionario.dataNacimento}">
                         <f:convertDateTime pattern="dd/MM/yyyy" type="date"/>
                     </h:outputText>
-                </h:column> 
+                </p:column> 
 
 
 
 
 
 
-                <h:column>
+                <p:column>
                     <f:facet name="header">
-                        <h:commandLink action="/faces/paginas/funcionario.xhtml">
-                            <h:graphicImage library="imagens" name="add.png"/>
-                        </h:commandLink>
+                        <p:commandButton action="/faces/paginas/funcionario.xhtml" icon="ui-icon-plus">
+                            
+                        </p:commandButton>
                     </f:facet>   
-                    <h:commandLink action="#{funcionarioMB.preparaAlteracao}" >
-                        <h:graphicImage library="imagens" name="edit.png"/>
+                    <p:commandButton action="#{funcionarioMB.preparaAlteracao}" icon="ui-icon-pencil">
+                        
                         <f:setPropertyActionListener value="#{funcionario}" target="#{funcionarioMB.funcionario}"/>
-                    </h:commandLink>
-                    <h:commandLink action="#{funcionarioMB.remove}" >
-                        <h:graphicImage library="imagens" name="delete.png"/>
+                    </p:commandButton>
+                    <p:commandButton action="#{funcionarioMB.remove}" icon="ui-icon-close">
                         <f:setPropertyActionListener value="#{funcionario}" target="#{funcionarioMB.funcionario}"/>
-                    </h:commandLink>
+                    </p:commandButton>
 
-                </h:column>  
-            </h:dataTable>
+                </p:column>  
+            </p:dataTable>
         </h:form>
     </ui:define>
 </ui:composition>
