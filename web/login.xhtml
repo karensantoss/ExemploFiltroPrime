@@ -9,25 +9,33 @@
         <title>Recursos Humanos</title>
         <h:outputStylesheet library="css" name="style.css"/>
     </h:head>
-    
+
     <h:body>
-        
-            <h2>LOGIN</h2>
-            <h:form>
-                <h:panelGrid columns="1">
-                    <h:inputText value="#{loginMB.login}"
+        <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="70" header="Gestão de Recursos Humanos">
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+
+
+                <h:form>
+
+                    <p:inputText value="#{loginMB.login}"
                                  id="login" 
                                  pt:placeholder="Usuário"/>
                     <br />
-                     <h:inputSecret value="#{loginMB.senha}"
-                                 id="senha" 
-                                 pt:placeholder="Senha"/>
-                     <br />
-                     <h:commandButton value="Ok" 
-                                      action="#{loginMB.autentica}"/>
-                    
-                </h:panelGrid>
-            </h:form>
-        
+                    <p:password value="#{loginMB.senha}"
+                                id="senha" 
+                                />
+                    <br />
+                    <p:commandButton value="Ok" 
+                                     action="#{loginMB.autentica}"/>
+
+
+                </h:form>
+            </p:layoutUnit>
+        </p:layout>
+
     </h:body>
 </html>
